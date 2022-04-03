@@ -25,13 +25,17 @@ class Perceptron{
             salida += this.pesos[i] * input[i];
         }
         salida += this.sesgo;
+
+        // retorna como función de activación de escalón.
+        // Para retornar el valor verdadero (sin función de activación) cambiar el return.
+
         // return salida;
         return (salida >= 0.5) ? (1):(0);
     }
 
     entrenar(epochs, dataInput, dataOutput){
         for (let i = 0; i < epochs; i++) {
-            // promedio de error
+            // Muestra el error total por epoca
             let errorEpoch = 0;
             for (let j = 0; j < dataInput.length; j++) {
                 // entrada y salida esperada
@@ -46,6 +50,7 @@ class Perceptron{
                 // ajustar los pesos
                 this.ajustarPesos(error, currentInput);
             }
+            // muestra el promedio de error por epoca
             // console.log(errorEpoch / dataInput.length);
         }
     }
